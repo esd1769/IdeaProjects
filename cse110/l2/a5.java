@@ -11,8 +11,8 @@ public class a5{
         int g=sc.nextInt();
 
         if(g<t){
-            int more=t-g;
-            System.out.println("Please pay "+more+" taka more.");
+            int moreToPay=t-g;
+            System.out.println("Please pay "+moreToPay+" taka more.");
         }
 
         else if(g==t) {
@@ -25,14 +25,14 @@ public class a5{
             int[] notes= {100,50,20,10};
             int[] coins ={5,2,1};
 
-            for(int n=0;n<notes.length;n++) {
-                int count=c/notes[n];
-                System.out.println(notes[n]+" taka note: "+count);
-                c=c%notes[n];}
-            for(int co=0;co<coins.length;co++) {
-                int count=c/coins[co];
-                System.out.println(coins[co]+" taka coin: "+count);
-                c=c%coins[co];
+            for(int note:notes) {
+                int count=c/note;
+                System.out.println(note+" taka note: "+count);
+                c%=note;}
+            for(int co:coins) {
+                int count=c/co;
+                System.out.println(co+" taka coin: "+count);
+                c%=co;
             }
         }
 
