@@ -1,0 +1,155 @@
+package t1;
+
+public class Student {
+    String name;
+    String prog;
+    public Student(String name, String prog) {
+        this.name = name;
+        this.prog = prog;
+    }
+    public void updateName(String newName) {
+        this.name = newName;
+    }
+    public void updateProgram(String newProgram) {
+        this.prog = newProgram;
+    }
+    public String accessProgram() {
+        return this.prog;
+    }
+}
+package t2;
+
+public class Toy {
+    String name;
+    int price;
+    public Toy(String s1,int a){
+        name =s1;
+        price=a;
+        System.out.println("A new toy has been made!");
+    }
+    public void updatePrice(int a){
+    price=a;}
+    public void updateName(String a){
+
+        System.out.printf("Changing old name: %s\n new name: %s\n",name,a);
+        name =a;
+        System.out.println();}
+   public void showPrice(){
+       System.out.println("price: "+price+"Taka");
+   }
+}
+package t3;
+
+public class Shape2D {
+    double area;
+    int length=5;
+    String type;
+    public Shape2D(){
+        type="Square";
+        area=length*length;
+        System.out.println("A Square has been created with length: "+length);
+
+    }
+    public Shape2D(int a,int b){
+        type="Rectangle";
+        System.out.printf("A Rectangle has been created with length: %d and breadth:  %d",a,b);
+        area=a*b;
+        System.out.println();
+
+    }
+    public Shape2D(int a,int b,String s1){
+        type="Triangle";
+
+        System.out.printf("A Triangle has been created with height: %d and base:  %d",a,b);
+        area=a*b*0.5;
+        System.out.println();
+
+    }
+    public Shape2D(int a,int b,int c){
+        type="Triangle";
+        System.out.printf("A Triangle has been created with the following sides: %d, %d, %d",a,b,c);
+        double s=(a+b+c)/2;
+        area=s*(s-a)*(s-b)*(s-c);
+        area=Math.sqrt(area);
+        System.out.println();
+
+    }
+    public void area(){
+        System.out.printf("The area of the %s is: %.2f",type,area);
+        System.out.println();
+        }
+
+    }
+package t4;
+
+public class Student {
+    int id;
+    double cg = Double.MAX_VALUE; // Default is MAX_VALUE to indicate CGPA hasn't been set
+    String str[] = new String[4]; // Array to store up to 4 courses
+    int count = 0; // To keep track of the number of courses added
+
+    // Constructor to create a student with ID only
+    public Student(int a) {
+        id = a;
+        System.out.printf("A student with ID %d has been created.\n", id);
+    }
+
+    // Constructor to create a student with ID and CGPA
+    public Student(int a, double d2) {
+        id = a;
+        cg = d2;
+        System.out.printf("A student with ID %d and cgpa %.2f has been created.\n", id, cg);
+    }
+
+    // Method to add multiple courses
+    public void addCourse(String[] st) {
+        str = st;
+    }
+
+    // Method to add a single course
+    public void addCourse(String s1) {
+        if (cg == Double.MAX_VALUE) {
+            System.out.println("Failed to add CSE110\nSet CG first");
+        } else {
+            if (count >= 4) { // Check if the number of courses exceeds 4
+                System.out.println("Failed to add " + s1 + "\nMaximum 4 courses allowed.");
+            } else if (cg < 3 && count >= 3) { // CG is low, can't add more than 3 courses
+                System.out.println("CG is low. Can't add more than 3 courses.");
+            } else {
+                str[count] = s1; // Add the course
+                count++; // Increment the count of courses
+            }
+        }
+    }
+
+    // Method to set CGPA
+    public void storeCG(double d) {
+        cg = d;
+    }
+
+    // Method to show student details and their courses
+    public void showAdvisee() {
+        System.out.printf("Student ID: %d, CGPA: %.2f\n", id, cg);
+
+        if (count == 0) {
+            System.out.println("No courses added.");
+        } else {
+            System.out.println("Added courses are:");
+            for (int i = 0; i < count; i++) {
+                System.out.print(str[i] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    // Method to remove all courses (reset the array)
+    public void removeAllCourse() {
+        str = new String[4]; // Reset the array to its initial size
+        count = 0; // Reset the count
+    }
+
+    // Method to store the student's ID
+    public void storeID(int b) {
+        id = b;
+    }
+}

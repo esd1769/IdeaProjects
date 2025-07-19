@@ -1,0 +1,8 @@
+{
+  "auth": {
+    "sessionSecret": "{\"id\":\"28b899f1-e5d5-4832-b26d-55f71e13595e\",\"version\":1,\"expires_at\":2064700800000}",
+    "userId": "2f245805-c455-48f3-bd9b-6a1ec2ec13fc",
+    "username": "dsgs",
+    "currentConnection": "Username-Password-Authentication"
+  }
+}

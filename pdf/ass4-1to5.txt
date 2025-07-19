@@ -1,0 +1,155 @@
+package t1;
+
+public class BankAccount{
+
+    public int accnum;
+    public String acctype = "Not Set";
+
+    public String printDetails(){
+        String str="Account No: " + accnum + "\nType: " + acctype;
+        return str;
+    }
+    public void setInfo(int s1, String s2) {
+        accnum = s1;
+        acctype = s2;
+        System.out.println("Account information updated!");
+    }
+}
+package t2;
+
+public class Shape {
+
+    String name;
+    double area;
+    double para1;
+    double para2;
+    public void setParameters(String s, double a) {
+        name = s;
+        para1=a;
+    }
+    public void setParameters(String s, double a, double b) {
+        name = s;
+        para1=a;
+        para2=b;
+    }
+
+    public String details() {
+        if (name.equals("Circle")){area=3.1416*para1*para1;}
+        if (name.equals("Triangle")){area=0.5*para1*para2;}
+        if (name.equals("Rectangle")){area=para1*para2;}
+        return "Shape Name: " + name + "\nArea: " + String.format("%.2f", area);
+
+
+}}
+package t3;
+
+public class Shelf{
+    int capacity;
+    int num;
+
+
+    public void showDetails() {
+        System.out.println("Shelf capacity: " + capacity);
+        System.out.println("Number of books: " + num);
+    }
+    public void addBooks(int a) {
+        if (capacity == 0) {
+            System.out.println("Zero capacity. Cannot add books.");
+        } else if (num + a > capacity) {
+            System.out.println("Exceeds capacity");
+        } else {
+            num += a;
+            System.out.println(a + " books added to shelf");
+        }
+    }
+}
+package t4;
+
+public class Library {
+    int cap;
+    String[] books;
+    int count = 0;
+    public void setBookCapacity(int a) {
+        cap = a;
+        books = new String[a];
+    }
+    public void addBook(String s) {
+        if (count < cap) {
+            books[count] = s;
+            count++;
+            System.out.printf("Book '%s' added to the library",s);
+            System.out.println();
+        } else {
+
+            System.out.printf("Maximum capacity exceeds. You can't add more than %d books",cap);
+            System.out.println();
+        }
+    }
+    public void printDetail() {
+        System.out.println("Maximum Capacity: " + cap);
+        System.out.println("Total Books: " + count);
+        if (count>0){
+            System.out.println("Book List:");
+            for (int i=0;i<count;i++){
+                System.out.println(books[i]);
+        }
+    }
+}}
+package t5;
+
+
+public class TaxiLagbe {
+    String num;
+    String area;
+    int fare;
+    int count;
+    int total = 4;
+    String[] passList=new String[total];
+
+    public void storeInfo(String s1, String s2) {
+        num = s1;
+        area = s2;
+    }
+
+    public void printDetails() {
+        System.out.println("Taxi number: " + num);
+        System.out.println("This taxi can cover " + area + " area");
+        System.out.println("Total Passenger: " + count);
+        System.out.println("Passenger Lists: ");
+        for (int i = 0; i < count; i++) {
+            System.out.print(passList[i]);
+            System.out.print(" ");
+        }
+        if (count!=0){System.out.println();}
+        System.out.println("Total collected fare: " + fare + " Taka");}
+
+        public void addPassenger (String name,int a){
+            if (count < total) {
+                passList[count] = name;
+                count++;
+                fare += a;
+                System.out.println("Dear " + name + "! Welcome to TaxiLagbe");
+            } else {
+                System.out.println("Taxi Full! No more passengers can be added");
+            }
+        }
+
+        public void addPassenger (String name1,int fare1, String name2,int fare2){
+            if (count < total) {
+                passList[count] = name1;
+                passList[count + 1] = name2;
+                count += 2;
+                fare += (fare1+ fare2);
+                System.out.println("Dear "+ name1 + "! Welcome to TaxiLagbe");
+                System.out.println("Dear " + name2 +"! Welcome to TaxiLagbe");
+            }
+            else {
+                System.out.println("Taxi Full! No more passengers can be added");
+            }
+        }
+
+}
+
+
+
+

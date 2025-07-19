@@ -1,0 +1,337 @@
+
+//TASK1
+package t1;
+public class Product {
+    private String name;
+    private double price;
+    private int quantity;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {this.price = price;}
+    public int getQuantity() {
+        return quantity;
+    }
+    public void setQuantity(int quantity) {this.quantity = quantity;}
+    public Product(){
+        this.name="Unknown";
+        this.price=0.0;
+    }
+
+    public Product(String name,double price) {
+        this.name =name;
+        this.price= price;
+    }
+    public void displayInfo(){
+        System.out.println("Product Name: "+name);
+        System.out.print("Price: $" +price);
+    }
+    public void displayInfo(boolean showQuantity){
+        System.out.println("Product Name: " +name);
+        System.out.println("Price: $"+ price);
+        if (showQuantity){
+            System.out.println("Quantity: "+ quantity);
+        }
+    }
+}
+//TASK1
+
+//TASK2
+package t2;
+public class Passenger {
+    static int no_of_passenger =0;
+    static double total_fare =0.0;
+    private String name;
+    private double distance;
+    private double baggageWeight;
+    public Passenger(String name,double distance){
+        this.name =name;
+        this.distance= distance;
+        this.baggageWeight=0;
+        no_of_passenger++;
+        total_fare+= countFare();
+    }
+    public void passengerDetails() {
+        System.out.println("Name: "+ name);
+        System.out.println("Fare: " + countFare() +" TK");
+        //System.out.println("Total Fare: "+ Passenger.total_fare + " TK");
+    }
+    public double countFare(){
+        return ((20*distance)+(10*baggageWeight));
+    }
+    public void storeBaggageWeight(double baggageWeight){
+        this.baggageWeight=baggageWeight;
+        total_fare=total_fare+(10*baggageWeight);
+    }
+
+
+
+}
+//task2
+//task3
+package t3;
+public class Book {
+    static int total_books_sold = 0;
+    static double total_revenue = 0.0;
+    private String title;
+    private double discountPercentage;
+    static final double bprice = 150.0;
+    public Book(String title,double discountPercentage){
+
+        this.discountPercentage =discountPercentage;
+        this.title= title;
+        total_books_sold++;
+        total_revenue += priceAfterDiscount();
+    }
+
+    public void bookDetails(){
+        System.out.println("Title: "+ title);
+        System.out.println("Price after Discount: "+priceAfterDiscount() +" TK");
+    }
+
+
+
+
+    public double priceAfterDiscount(){
+        return (bprice* (1 - (discountPercentage/100)));
+    }
+
+
+}
+//task3
+//task4
+package t4;
+
+public class Circle {
+    private double radius;
+    static int count=0;
+    public Circle(double radius){
+        this.radius=radius;
+        count++;
+    }
+    public double getRadius(){return radius;}
+    public void setRadius(double radius){this.radius = radius;}
+    public double area(){return Math.PI*radius*radius;}
+}
+//task4
+//task5
+package t5;
+public class Borrower{
+  public static int book_count[]= {3, 3, 3};
+  public static String book_name[] ={"Pather Panchali", "Durgesh Nandini", "Anandmath"};
+  private String borrowerName;
+  private String[] borrowedBooks= new String[3];
+  private int borrowedCount =0;
+  public static void bookStatus(){
+    System.out.println("Available Books: ");
+    for (int i=0;i<book_name.length;i++){
+      System.out.println(book_name[i]+": "+book_count[i]);
+    }}
+  public Borrower(String borrowerName){
+    this.borrowerName =borrowerName;
+  }
+
+
+
+  public void borrowBook(String book){
+    int i=getBookIndex(book);
+    if (i!=-1&& remainingBooks(book)>0){
+      book_count[i]--;
+
+      borrowedBooks[borrowedCount++]=book;
+    } else{
+      System.out.println("This book is not available.");
+    }
+  }
+  private static int getBookIndex(String book) {
+    for (int i=0;i<book_name.length;i++) {
+      if (book_name[i].equals(book)) {return i;}}
+    return -1;
+  }
+
+  public void borrowerDetails() {
+    System.out.println("Name: " + borrowerName);
+    System.out.println("Books Borrowed: ");
+    for (int i =0;i<borrowedCount;i++) {
+      System.out.println(borrowedBooks[i]);
+    }
+  }
+
+  public static int remainingBooks(String book){
+    int j=getBookIndex(book);
+    if(j!=-1){return book_count[j];}
+    return 0;
+  }
+
+
+}
+
+//task5
+//task6
+package t6;
+public class Cargo {
+    private static double totalCap =10.0;
+    private static double curload =0.0;
+    private static int cargoCount= 0;
+    private String contents;
+    private double weight;
+    private int cargoID;
+    private boolean loaded;
+    public Cargo(String contents,double weight){
+        this.contents =contents;
+        this.weight= weight;
+        this.cargoID =++cargoCount;
+        this.loaded=false;
+    }
+    public static double capacity(){return totalCap - curload;}
+    public void details(){
+
+        System.out.println("Cargo ID: "+cargoID + ", Contents: "+ contents+", Weight: "+ weight +", Loaded: "+loaded);
+    }
+    public void load(){
+        if(curload+weight<=totalCap){
+            curload+=weight;
+            loaded=true;
+            System.out.println("Cargo "+cargoID+" loaded for transport.");
+        } else{
+            System.out.println("Cannot load cargo, exceeds weight capacity.");
+        }
+
+
+
+    }
+    public void unload(){
+        if (loaded==true){
+            curload-=weight;
+            loaded=false;
+            System.out.println("Cargo "+cargoID +" unloaded.");
+
+        }}
+
+}
+//task6
+//task7
+package t7;
+public class Student{
+    private static int total=0;
+    private static int cse=0;
+    private static int other=0;
+    private int id;
+    private String name;
+    private double cgpa;
+    private String department;
+    public static void printDetails(){
+        System.out.println("Total Student(s): "+total);
+        System.out.println("CSE Student(s): "+cse);
+        System.out.println("Other Department Student(s): "+other);
+    }
+    public Student(String name,double cgpa){
+
+        this.name=name;
+        this.cgpa=cgpa;
+        this.department="CSE";
+        this.id=++total;
+        cse++;
+
+
+    }
+    public void individualDetail(){
+        System.out.println("ID: " +id);
+        System.out.println("Name: "+ name);
+        System.out.println("CGPA: " +cgpa);
+        System.out.println("Department: " +department);
+
+
+    }
+
+
+    public Student(String name,double cgpa,String department){
+        this.name= name;
+        this.cgpa =cgpa;
+        this.department= department;
+
+        if(department.equals("CSE")){
+            cse++;
+        } else{
+            other++;
+        }
+        this.id=++total;
+
+    }
+
+
+
+}
+//task7
+//task8
+package t8;
+
+public class Player {
+    public static int total=0;
+    private static String str = "";
+    private String name;
+    private String country;
+    private int jerseyNumber;
+
+
+
+    public Player(String name,String country,int jerseyNumber){
+        if (total<11){
+            this.name= name;
+            this.country =country;
+            this.jerseyNumber=jerseyNumber;
+            total++;
+            if(str.length()==0){
+                str =name;
+            } else{
+
+                str +=", "+name;
+            }
+
+        }
+    }
+
+
+    public String player_detail() {
+        return ("Player Name: " +name+"\nJersey Number: "+jerseyNumber+"\nCountry: "+country);
+
+    }
+    
+    public static void info() {
+        System.out.printf("Total number of players: %d\n",total);
+
+
+        System.out.println("Players enlisted so far: "+ str);
+    }
+}
+//task8
+
+
+
+
+ else{
+            other++;
+        }
+        this.id=++total;
+
+    }
+
+
+
+}
+//task7
+//task8
+package t8;
+
+public class Player {
+    public static int total=0;
+    private static String str = "";
+    private String name;
+    private String country;
+ 

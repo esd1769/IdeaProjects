@@ -1,0 +1,219 @@
+//task4
+
+import java.util.Scanner;
+
+public class Task4 {public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+        String s1 = scanner.nextLine();
+        String s2="";
+
+        for (int i = 0; i < s1.length(); i++) {
+            char char1 = s1.charAt(i);
+            if (char1=='a'){s2+='z';continue;}
+            if (char1 >= 'a' && char1 <= 'z') {
+                char char2 = (char) (char1-1);
+                s2+=char2;
+            }
+            }
+    System.out.println(s2);
+        }
+
+
+    }
+
+//task5
+import java.util.Scanner;
+
+public class Task5 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the length of the array: ");
+        int len = scanner.nextInt();
+        int[] arr = new int[len];
+        for (int i = 0; i < len; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        int start = 0;
+        int end = len - 1;
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+        for (int i = 0; i < len; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
+//task6
+//O(N*N)+O(N)
+import java.util.Scanner;
+
+public class Task6 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("N=");
+        int N = scanner.nextInt();
+
+        int[] arr = new int[N];
+        for (int i = 0; i < N; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        for (int i = 0; i < N; i++) {
+            int elementcount = 1;
+            if (arr[i] != Integer.MAX_VALUE) {
+                for (int j = i+1; j < N; j++) {
+                    if (arr[i] == arr[j]) {
+                        elementcount++;
+                        arr[j] = Integer.MAX_VALUE;
+                    }
+                }
+                System.out.println(arr[i] + " - " + elementcount + " times");
+            }
+        }
+    }
+}
+/*
+//O(N)+O(2maxi)+O(2maxi)
+import java.util.Scanner;
+
+public class Task6 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("N=");
+        int N = scanner.nextInt();
+        int[] arr = new int[N];
+        int maxi = Integer.MIN_VALUE;
+        for (int i = 0; i < N; i++) {
+            arr[i] = scanner.nextInt();
+            if (arr[i] > maxi) {
+                maxi = arr[i];
+            }
+        }
+        int[] hashing = new int[2 * maxi + 1];
+        for (int i = 0; i < N; i++) {
+            int index = arr[i] + maxi;
+            hashing[index]++;
+        }
+        for (int k = -maxi; k <= maxi; k++) {
+            int index = k + maxi;
+            if (hashing[index] > 0) {
+                System.out.println(k + " - " + hashing[index] + " times");
+            }
+        }
+    }
+*/
+//task7
+package com.company;
+import java.util.Scanner;
+
+public class task7 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("N=");
+        int N = scanner.nextInt();
+        double[] arr = new double[N];
+        System.out.println("Please enter the elements of the array:");
+        for (int i = 0; i < N; i++) {
+            arr[i] = scanner.nextDouble();
+        }
+        double[] newarray = new double[N];
+        int index = 0;
+        int count = 0;
+        for (int i = 0; i < N; i++) {
+            if (i==0||(arr[i] != arr[i - 1])) {
+                newarray[index] = arr[i];
+                index++;
+            } else {
+                count++;
+            }
+        }
+        System.out.print("New Array: ");
+        for (int i = 0; i < index; i++) {
+            System.out.print(newarray[i] + " ");
+        }
+        System.out.println();
+        System.out.println("Removed elements: " + count);
+    }
+}
+//task8
+import java.util.Scanner;
+
+public class task8 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("row=");
+        int r = scanner.nextInt();
+
+        System.out.print("column=");
+        int c = scanner.nextInt();
+        int[][] arr2 = new int[r][c];
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                arr2[i][j] = scanner.nextInt();
+            }
+        }
+        System.out.println("2D Array:");
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                System.out.print(arr2[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        int[] arr1 = new int[r * c];
+        int i1 = 0;
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                arr1[i1++] = arr2[i][j];
+            }
+        }
+        System.out.println("1D Array:");
+        for (int i = 0; i < arr1.length; i++) {
+            System.out.print(arr1[i] + " ");
+        }
+    }
+}
+//task9
+package com.company;
+
+import java.util.Scanner;
+
+public class Task9 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        boolean flag = true;
+        int[][] mat = new int[N][N];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                mat[i][j] = scanner.nextInt();
+            }
+        }
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (i != j) {
+                    if (mat[i][j] != 0) {
+                        flag = false;
+                        break;
+                    }
+                } else {
+                    if (mat[i][j] != 1) {
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+        }
+        if (flag==true) {
+            System.out.println("Identity Matrix");
+        } else {
+            System.out.println("Not an Identity Matrix");
+        }
+    }
+}
+//task10
+

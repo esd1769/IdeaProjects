@@ -1,0 +1,212 @@
+TASK1
+public class UniversityTester {
+    public static void main(String[] args) {
+        University u1=new University();
+        University u2=new University();
+        System.out.println(u1);
+        System.out.println(u2);
+
+        if (u1==u2){
+            System.out.println("same location");
+        }
+        else{
+            System.out.println("not same location");
+        }
+        System.out.println(u1.name);
+        System.out.println(u1.country);
+        System.out.println(u2.name);
+        System.out.println(u2.country);
+        u1.name = "Imperial College London";
+        u1.country ="England";
+        u2.name ="Brac University";
+        u2.country ="Bangladesh";
+        
+
+        if (u1.name!=null){
+            System.out.println("changed");
+        }
+        else{
+            System.out.println("not");
+        }
+        if (u2.name!=null){
+            System.out.println("changed");
+        }
+        else{
+            System.out.println("not");
+        }
+
+        if (u1.country!=null){
+            System.out.println("changed");
+        }
+        else{
+            System.out.println("not");
+        }
+
+        if (u2.country!=null){
+            System.out.println("changed");
+        }
+        else{
+            System.out.println("not");
+        }
+        //check with object value
+        if (u1.name==u2.name){
+            System.out.println("same");
+        }
+        else{
+            System.out.println("not same");
+        }
+        if (u1.country==u2.country){
+            System.out.println("same");
+        }
+        else{
+            System.out.println("not same");
+        }
+
+
+
+
+
+
+    }
+}
+TASK2
+public class Student {
+    String name="Default";
+    int id;
+}
+
+TASK3
+public class CSECourse {
+    String courseName="Programming Language II";
+    String courseCode="CSE111";
+    int credit=3;
+}
+
+TASK4
+public class ImaginaryNumber {
+    int realPart=0;
+    int imaginaryPart=0;
+    public void printNumber(){
+        System.out.println(realPart+" + "+imaginaryPart+"i");
+    }
+}
+task5
+public class Course {
+    String name;
+    String code;
+    int credit;
+    public void updateDetails(String s1,String s2,int s3){
+        this. name=s1;
+        this. code=s2;
+        this. credit=s3;
+    }
+
+    public void displayCourse(){
+        System.out.println("Course Name: "+name+"\n"+"Course Code: "+ code+"\n" + "Course Credit: "+credit);
+    }
+}
+task6
+public class Assignment {
+    String difficulty;
+    boolean submission;
+    int tasks;
+    public void printDetails(){
+        System.out.println("Number of tasks: "+tasks+"\n Difficulty level: "+difficulty+"\n Submission required: "+submission);
+    }
+
+    public String makeOptional() {
+        if (submission==false){
+            return "Submission is already not required";
+        }
+        else{submission=false;
+        return "Assignment will not require submission";
+        }
+
+    }
+
+}
+task7
+public class CellPhone {
+    String[] arr= new String[3];
+
+    String model="unknown";
+    int count=0;
+    public void printDetails(){
+        System.out.println("Phone Model "+ model+"\n" + "Contacts Stored "+ count);
+        if(count!=0){
+            System.out.println("Stored Contacts:");
+            for (int i=0;i<count ;i++){
+                // for (int i=0;i<arr.length && arr[i]!=null ;I++){
+                System.out.println(arr[i]);
+            }
+        }
+
+    }
+    public void storeContact(String str){
+        if (count<3){
+            arr[count]=str;
+            count++;
+            System.out.println("Contact Stored");
+
+        }
+        else{
+            System.out.println("Memory full. New contact can't be stored.");
+        }
+
+    }
+}
+TASK8
+public class Employee {
+    String name;
+    double salary=30000.0;
+    String designation="junior";
+    public void newEmployee(String name){
+        this.name=name;
+
+    }
+    public void displayInfo(){
+        //System.out.println("Employee Name: "+name +"\nEmployee Salary: "+salary+" Tk\nEmployee Designation: "+designation);
+        System.out.println("Employee Name: "+name);
+        System.out.printf("Employee Salary: %.1f Tk",salary);
+        System.out.println();
+        System.out.println("Employee Designation: "+designation);
+
+    }
+    public void calculateTax(){
+        double taxAmount;
+        if (salary <=30000.0){
+            System.out.println("No need to pay tax");
+        }
+        else if (50000.0 >=  salary  && salary > 30000.0){
+            taxAmount=(salary*10)/100.0;
+            //System.out.println(name+" Tax Amount: "+taxAmount+"Tk");
+            System.out.printf(name+" Tax Amount: %.2f Tk",taxAmount);
+            System.out.println();
+        }
+        else if (salary >50000.0){
+            taxAmount=(salary*30)/100.0;
+            //System.out.println(name+" Tax Amount: "+taxAmount+"Tk");
+            System.out.printf(name+" Tax Amount: %.2f Tk",taxAmount);
+            System.out.println();
+        }
+
+    }
+    public void promoteEmployee(String designation){
+        this.designation=designation;
+        if (designation.equals("senior")){
+            salary+=25000;
+        }
+        else if (designation.equals("lead")){
+            salary+=50000;
+        }
+        else if (designation.equals("manager")){
+            salary+=75000;
+        }
+        //System.out.println(name+"has been promoted to " +designation+
+                //"\n New Salary: "+salary+" Tk\n");
+        System.out.println(name+" has been promoted to " +designation);
+        System.out.printf("New Salary: %.2f Tk",salary);
+        System.out.println();
+    }
+
+}
